@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!-- partial page only to show extra functions/table div/sexy bootstrap buttons
+
+there is a bunch of crap that's not used still referenced below..probably?-->
+<html lang="en">
+<head>
+    <!--JS LIBRARIES-->
+    <!--JQUERY-->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <!--BOOTSTRAP JS-->
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+ 
+    <!--BOOTSTRAP CSS-->
+    <link type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
+<script src="//cdn.datatables.net/buttons/1.1.0/js/buttons.flash.js" language="javascript" type="text/javascript"/>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.js" language="javascript" type="text/javascript"/>
+<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.js" language="javascript" type="text/javascript"/>
+<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js" language="javascript" type="text/javascript"/>
+<script src="//cdn.datatables.net/buttons/1.1.0/js/buttons.html5.js" language="javascript" type="text/javascript"/>
+<script src="//cdn.datatables.net/buttons/1.1.0/js/buttons.print.js" language="javascript" type="text/javascript"/>
+<script src="//cdn.datatables.net/buttons/1.1.0/js/buttons.colVis.js" language="javascript" type="text/javascript"/>
+<link type="text/css" href="//cdn.datatables.net/buttons/1.1.0/css/buttons.dataTables.min.css" rel="stylesheet">
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.js"></script>
+<link type="text/css" href="//cdn.datatables.net/buttons/1.1.0/css/buttons.dataTables.min.css" rel="stylesheet">
+<!--bootstrap integration css -->
+<link rel="stylesheet" href="//cdn.datatables.net/plug-ins/a5734b29083/integration/bootstrap/3/dataTables.bootstrap.css">
+<!--bootstrap integration js --> 
+ <script src="//cdn.datatables.net/plug-ins/a5734b29083/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+ <script type="text/javascript">
+
+function reply_click(headv){
+
+if (headv != document.getElementById("whatTable").innerHTML){
+    document.getElementById("whatTable").innerHTML = headv;}
+    else {document.getElementById("whatTable").innerHTML = 'Make a selection';}
+}
+   </script>
+
+    <!-- TableTop raw git -->
+    <script src="//uc.mdemersjr.com/sites/default/files/js/tabletop.js" type="text/javascript"></script>
+    <script src="//uc.mdemersjr.com/sites/default/files/js/graphic.js" type="text/javascript"></script>
+</head>
+<body>
+
+    <div class="row thetop"><div class="tableMenu btn-group col-md-7"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#usageModal">Usage</button><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#keyModal">Key</button><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#toggleColumns" aria-expanded="false" aria-controls="toggleColumns">Toggle Individual Columns</button><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#toggleSets" aria-expanded="false" aria-controls="toggleSets">View Sets</button><button class="resetTable btn btn-success" onClick="reply_click('Labels: All')">Reset <span class="glyphicon glyphicon-refresh"></span></button></div><div class="col-md-5 whatTablelabel"><h3 id="whatTable">Labels: All</h3></div></div>
+
+<div class="collapse" id="toggleColumns">
+  <div class="well well-sm btn-toolbar">
+  <div class="btn-group">
+  <button class="toggle-vis cursorPointer btn btn-default btn-sm" data-column="0">Solr Base Field</button>
+  <button class="toggle-vis cursorPointer btn btn-default btn-sm" data-column="1">Field Origin</button>
+  <button class="toggle-vis cursorPointer btn btn-default btn-sm" data-column="2">MODS Top Level Element</button>
+  <button class="toggle-vis cursorPointer btn btn-default btn-sm" data-column="3">Elements+Attributes</button>
+  </div>
+  <div class="btn-group">
+  <button class="toggle-vis cursorPointer btn btn-default btn-sm" data-column="4">Full Description Display</button>
+  </div>
+  <div class="btn-group">
+  <button class="toggle-vis cursorPointer btn btn-default btn-sm" data-column="5">Facet Label</button>
+  <button class="toggle-vis cursorPointer btn btn-default btn-sm" data-column="6">Facet Field</button>
+  </div>
+  <div class="btn-group">
+  <button class="toggle-vis cursorPointer btn btn-default btn-sm" data-column="7">Search Results Label</button>
+  <button class="toggle-vis cursorPointer btn btn-default btn-sm" data-column="8">Search Results Field</button>
+  </div>
+  <div class="btn-group">
+  <button class="toggle-vis cursorPointer btn btn-default btn-sm" data-column="9">Sort Label</button>
+  <button class="toggle-vis cursorPointer btn btn-default btn-sm" data-column="10">Sort Field</button>
+  </div>
+  <div class="btn-group">
+  <button class="toggle-vis cursorPointer btn btn-default btn-sm" data-column="11">Advanced Search Label</button>
+  <button class="toggle-vis cursorPointer btn btn-default btn-sm" data-column="12">Advanced Search Field</button>
+  <button class="toggle-vis cursorPointer btn btn-default btn-sm" data-column="13">Seconday Advanced Search Label</button>
+  <button class="toggle-vis cursorPointer btn btn-default btn-sm" data-column="14">Secondary Advanced Search Field</button>
+  <button class="toggle-vis cursorPointer btn btn-default btn-sm" data-column="15">Tertiary Advanced Search Label</button>
+  <button class="toggle-vis cursorPointer btn btn-default btn-sm" data-column="16">Tertiary Advanced Search Field</button>
+  </div>
+  </div>
+  </div>
+  
+  <div class="collapse" id="toggleSets">
+	<div class="well well-sm btn-toolbar">
+	<div class="btn-group">
+		<button class="toggle-solr cursorPointer btn btn-default btn-sm" onClick="reply_click('Toggle All Solr Fields')">Show All</button>
+	</div>
+	<div class="btn-group">
+		<button onClick="reply_click('MODS Fields')" class="toggle-originMODS cursorPointer btn btn-default btn-sm">MODS Fields Only</button>
+		<button onClick="reply_click('RELS-EXT Fields')" class="toggle-originRELSEXT cursorPointer btn btn-default btn-sm">RELS-EXT Fields Only</button>
+		<button onClick="reply_click('Fedora Object XML Fields')" class="toggle-originFoXML cursorPointer btn btn-default btn-sm">FoXML Fields Only</button>
+	</div>
+	<div class="btn-group">
+		<button onClick="reply_click('Basic Search Fields')" class="toggle-searchResults cursorPointer btn btn-default btn-sm">Basic Search</button>
+		<button onClick="reply_click('Search Sort Fields')" class="toggle-sortLabel cursorPointer btn btn-default btn-sm">Search Sort</button>
+		<button class="toggle-facet cursorPointer btn btn-default btn-sm" onClick="reply_click('Search Facets Fields')">Search Facets</button>
+		<button onClick="reply_click('Advanced Search Fields')" class="toggle-advSearch cursorPointer btn btn-default btn-sm">Advanced Search</button>
+		<button onClick="reply_click('Full Description Record Display Fields')" class="toggle-fullDesc cursorPointer btn btn-default btn-sm">Full Description Display</button>
+	</div>
+	</div>
+</div>
+<br/>
+    <div id="graphic"></div>
+
+<div class="modal fade" id="keyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog keyModaldialog container" role="document">
+    <div class="modal-content keyModalcontent" style="position:absolute;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Key</h4>
+      </div>
+      <div class="modal-body">
+<!--a bunch of content here-->
+    </div>
+  </div>
+</div>
+</div>
+<div class="modal fade" id="usageModal" tabindex="-1" role="dialog" aria-labelledby="usageModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="position:absolute;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Usage</h4>
+      </div>
+      <div class="modal-body">
+    <p>The rows of this table document the associations between solr, metadata, and display fields. The principal purpose is to allow end users to reference the elements and their corresponding Search, Sort, and Record fields. This list is not exhaustive as solr fields are dynamically generated.</p><ul><li>Use the Search box to the right of the table to narrow table results</li><li>To view a list of pre-defined queries select 'View sets'.</li><li> To hide/expose individual columns select 'Toggle individual columns'.</li><li>Any selection of data can be exported in formats provided in the menu above the table.<b> Note: PDF exports do not work well with the inclusion of many columns!</b></li><li> To return the table back to it's original state select 'Reset'.</li></ul><p>Users can make further use of the solr values found in the table by visiting their institutions Advanced Search page. Entering the solr values into the Islandora Metadata Search and Islandora Metadata Browse feature will generate lists of records indexed by these values.<img src="http://i.imgur.com/V7c1aX6.png"><img src="http://i.imgur.com/U41YEcV.png"></p><p>For details on columns and data syntax, select <a href="#keyModal">Key</a></p>
+</div></div></div></div>
+</body>
+</html>
